@@ -20,15 +20,10 @@ function getHumanChoice(){
 }
 
 
-
-
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-console.log(playRound(humanSelection, computerSelection));
-
 function playGame(){
     var computerScore = 0;
     var humanScore = 0;
+   
     function playRound(humanChoice, computerChoice){
         if(humanChoice == computerChoice)
             return(`its egality you both chose ${humanChoice}...`);
@@ -37,18 +32,26 @@ function playGame(){
             case(humanChoice == "scissors" && computerChoice == "paper"):
             case(humanChoice == "paper" && computerChoice == "rock"):
             {
-                humanScore++;
-                return(`you won... ${humanChoice} beats ${computerChoice}`);
+                humanScore += 1;
+                return(`you won... ${humanChoice} beats ${computerChoice}.  your score = ${humanScore} computer score = ${computerScore}`);
             }
             case(computerChoice == "rock" && humanChoice == "scissors"):
             case(computerChoice == "scissors" && humanChoice == "paper"):
             case(computerChoice == "paper" && humanChoice == "rock"):
             {
-                computerScore++
+                computerScore += 1;
                 return(`you lost... ${computerChoice} beats ${humanChoice}.  your score = ${humanScore} computer score = ${computerScore}`);   
             }
         }
     }
+    
+    for(let i = 0; i < 5; i++)
+    {
+        
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+        console.log(playRound(humanSelection, computerSelection));
+    }
 }
 
-// console.log(getHumanChoice());
+playGame();
